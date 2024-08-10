@@ -1,3 +1,3 @@
 pub mod attributes;
 pub mod hero;
-pub  mod skills;
+pub mod skills;
