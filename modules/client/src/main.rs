@@ -1,7 +1,7 @@
 use leptos::*;
 
 fn main() {
-    _ = console_error_panic_hook::set_once();
+    console_error_panic_hook::set_once();
 
     mount_to_body(|| {
         view! {
