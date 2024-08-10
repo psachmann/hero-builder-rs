@@ -1,0 +1,24 @@
+version: 2
+
+updates:
+  - package-ecosystem: cargo
+    directory: /
+    schedule:
+      interval: monthly
+    labels:
+      - dependencies
+    assignees:
+      - dependabot[bot]
+    reviewers:
+      - psachmann
+
+  - package-ecosystem: github-actions
+    directory: .github/workflows
+    schedule:
+      interval: monthly
+    labels:
+      - dependencies
+    assignees:
+      - dependabot[bot]
+    reviewers:
+      - psachmann
