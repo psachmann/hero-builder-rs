@@ -9,7 +9,15 @@
     "**/.direnv": true,
     "**/target": true,
   },
+  "editor.quickSuggestions": {
+    "strings": "on"
+  },
+  "tailwindCSS.includeLanguages": {
+    "rust": "typescriptreact"
+  },
   "cSpell.words": [
+    "leptos",
+    "leptosfmt",
     "Sachmann"
   ]
 }
