@@ -19,6 +19,9 @@
     "leptos",
     "leptosfmt",
     "psachmann",
-    "Sachmann"
-  ]
+    "Sachmann",
+    "uuid",
+    "Uuid"
+  ],
+  "cSpell.language": "en,de-DE"
 }
