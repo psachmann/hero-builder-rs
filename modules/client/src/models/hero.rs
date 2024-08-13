@@ -5,6 +5,7 @@ use uuid::Uuid;
 pub struct Hero {
     pub id: Uuid,
     pub name: RwSignal<String>,
+    pub size_class: RwSignal<i32>,
 }
 
 impl Hero {
@@ -12,6 +13,7 @@ impl Hero {
         Self {
             id: Uuid::now_v7(),
             name: RwSignal::new(name),
+            size_class: RwSignal::new(0),
         }
     }
 }
