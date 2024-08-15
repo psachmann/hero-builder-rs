@@ -3,8 +3,8 @@ use leptos::*;
 #[component]
 pub fn sidebar() -> impl IntoView {
     view! {
-        <aside>
+        <div>
             <h1>{"Sidebar"}</h1>
-        </aside>
+        </div>
     }
 }
