@@ -11,7 +11,7 @@ use sidebar::Sidebar;
 #[component]
 pub fn layout(children: ChildrenFn) -> impl IntoView {
     view! {
-        <div class="grid grid-cols-10 grid-rows-3 gap-2 bg-slate-400">
+        <div class="grid grid-cols-10 auto-rows-auto gap-2 bg-slate-400">
             <header class="col-span-10 row-span-1 bg-slate-200">
                 <Header />
             </header>
@@ -19,9 +19,7 @@ pub fn layout(children: ChildrenFn) -> impl IntoView {
                 <Sidebar />
             </aside>
             <main class="col-span-8 row-span-1 bg-slate-200">
-                <div>
-                    {children()}
-                </div>
+                <div>{children()}</div>
             </main>
             <footer class="col-span-10 row-span-1 bg-slate-200">
                 <Footer />
