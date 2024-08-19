@@ -1,6 +1,6 @@
-pub mod attributes;
-pub mod hero;
-pub mod skills;
+mod attributes;
+mod hero;
+mod skills;
 
 pub use attributes::{Attribute, Attributes, DerivedAttribute, DerivedAttributes};
 pub use hero::Hero;
