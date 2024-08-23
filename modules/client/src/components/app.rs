@@ -1,7 +1,4 @@
 use leptos::*;
-use leptos_router::*;
-
-use super::layout::Layout;
 
 #[component]
 fn counter() -> impl IntoView {
