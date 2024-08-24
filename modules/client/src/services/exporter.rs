@@ -23,6 +23,7 @@ pub fn export_hero(hero: &Hero) -> Result<(String, String)> {
 
 #[cfg(test)]
 mod tests {
+    use pretty_assertions::assert_eq;
     use super::*;
     use crate::models::Hero;
 

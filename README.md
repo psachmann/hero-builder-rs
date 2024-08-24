@@ -4,3 +4,4 @@
 ## Tools to install
 - trunk with `cargo install trunk` (build tool)
 - leptosfmt with `cargo install leptosfmt` (formatter for rust html)
+- nextest with `cargo install cargo-nextest --locked`
