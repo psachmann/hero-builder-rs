@@ -9,5 +9,10 @@
     "copyright": "Hero Builder © 2024 psachmann",
     "github": "Sources on GitHub",
     "docs": "Documentation"
+  },
+  "home": {
+    "welcome_title": "Welcome to Hero Builder!",
+    "welcome_text": "Welcome to the Splittermond Hero Builder. Create your characters for exciting adventures in the world of Splittermond with this tool. Get ready to forge your legend!",
+    "start_button": "Let's go!"
   }
 }
