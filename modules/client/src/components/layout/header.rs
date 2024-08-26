@@ -29,13 +29,11 @@ pub fn header() -> impl IntoView {
                             i18n.set_locale(new_locale);
                         }
                     >
-                        <option value="en">{t!(i18n, header.english)}</option>
                         <option value="de">{t!(i18n, header.german)}</option>
+                        <option value="en">{t!(i18n, header.english)}</option>
                     </select>
                 </div>
             </nav>
         </div>
     }
 }
-
-

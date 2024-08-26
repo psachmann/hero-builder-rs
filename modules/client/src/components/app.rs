@@ -1,9 +1,9 @@
 use leptos::*;
 use leptos_router::*;
 
-use crate::i18n::provide_i18n_context;
 use super::home::Home;
 use super::layout::Layout;
+use crate::i18n::provide_i18n_context;
 
 #[component]
 fn counter() -> impl IntoView {
@@ -44,18 +44,7 @@ pub fn app() -> impl IntoView {
         <Router>
             <Layout>
                 <Routes>
-                    <Route
-                        path="/"
-                        view=|| {
-                            view! {
-                                <div class="container mx-auto justify-center">
-                                    <h1 class="text-4xl font-bold text-black">
-                                        {"Welcome to Hero Builder"}
-                                    </h1>
-                                </div>
-                            }
-                        }
-                    />
+                    <Route path="/" view=Home />
                     <Route path="/counter" view=Counter />
                     <Route
                         path="/*any"

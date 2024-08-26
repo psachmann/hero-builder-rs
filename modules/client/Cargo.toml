@@ -4,8 +4,8 @@ version = "0.1.0"
 edition = "2021"
 
 [package.metadata.leptos-i18n]
-default = "en"
-locales = ["en", "de"]
+default = "de"
+locales = ["de", "en"]
 
 [dependencies]
 anyhow = "1.0.86"
