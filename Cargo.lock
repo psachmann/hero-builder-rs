@@ -252,6 +252,17 @@ dependencies = [
 ]
 
 [[package]]
+name = "console_log"
+version = "1.0.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "be8aed40e4edbf4d3b4431ab260b63fdc40f5780a4766824329ea0f1eefe3c0f"
+dependencies = [
+ "log",
+ "wasm-bindgen",
+ "web-sys",
+]
+
+[[package]]
 name = "const_format"
 version = "0.2.32"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -563,9 +574,13 @@ dependencies = [
  "chrono",
  "chrono-tz",
  "console_error_panic_hook",
+ "console_log",
  "leptos",
+ "leptos_i18n",
+ "leptos_i18n_macro",
  "leptos_query",
  "leptos_router",
+ "log",
  "opentelemetry",
  "opentelemetry-http",
  "opentelemetry-stdout",
@@ -781,6 +796,34 @@ dependencies = [
 ]
 
 [[package]]
+name = "leptos_i18n"
+version = "0.3.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "6f74acc148183951986b9564214f34a2bdb2c14ef45f6db20898839e195a891d"
+dependencies = [
+ "cfg-if",
+ "leptos",
+ "leptos_i18n_macro",
+ "leptos_meta",
+ "wasm-bindgen",
+ "web-sys",
+]
+
+[[package]]
+name = "leptos_i18n_macro"
+version = "0.3.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "bf1c733bc79fccdd31c585535ad1d41586a4e7a22b17a5015405542acd828f3c"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "serde",
+ "serde_json",
+ "syn",
+ "toml",
+]
+
+[[package]]
 name = "leptos_macro"
 version = "0.6.14"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -801,6 +844,20 @@ dependencies = [
  "syn",
  "tracing",
  "uuid",
+]
+
+[[package]]
+name = "leptos_meta"
+version = "0.6.14"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "779bc68f8c05b15dde6557f9eb7baef4fa606a5bc450c1d6ff8787b092d0ae93"
+dependencies = [
+ "cfg-if",
+ "indexmap",
+ "leptos",
+ "tracing",
+ "wasm-bindgen",
+ "web-sys",
 ]
 
 [[package]]

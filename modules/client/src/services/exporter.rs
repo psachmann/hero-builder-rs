@@ -15,17 +15,17 @@ use crate::models::Hero;
 /// This function will return an error if the hero cannot be serialized into JSON.
 #[allow(dead_code)]
 pub fn export_hero(hero: &Hero) -> Result<(String, String)> {
-    let hero_json = serde_json::to_string(hero).with_context(|| "Failed to serialize hero into JSON")?;
+    let hero_json =
+        serde_json::to_string(hero).with_context(|| "Failed to serialize hero into JSON")?;
 
     Ok((hero.name.get(), hero_json))
 }
 
-
 #[cfg(test)]
 mod tests {
-    use pretty_assertions::assert_eq;
     use super::*;
     use crate::models::Hero;
+    use pretty_assertions::assert_eq;
 
     #[test]
     fn test_export_hero() {

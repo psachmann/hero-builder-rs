@@ -1,0 +1,13 @@
+{
+  "hello_world": "Hallo Welt!",
+  "header": {
+    "title": "Hero Builder",
+    "english": "Englisch",
+    "german": "Deutsch"
+  },
+  "footer": {
+    "copyright": "Hero Builder © 2024 psachmann",
+    "github": "Quellcode auf GitHub",
+    "docs": "Dokumentation"
+  }
+}
