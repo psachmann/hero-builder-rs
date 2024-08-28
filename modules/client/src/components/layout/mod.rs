@@ -14,9 +14,7 @@ pub fn layout(children: ChildrenFn) -> impl IntoView {
             <header class="col-span-10 row-span-1">
                 <Header />
             </header>
-            <main class="flex-grow">
-                <div>{children()}</div>
-            </main>
+            <main class="flex-grow">{children()}</main>
             <footer>
                 <Footer />
             </footer>

@@ -57,7 +57,7 @@ pub struct DerivedAttributes {
 impl DerivedAttributes {
     pub fn new(hero: Hero, attributes: Attributes) -> Self {
         let size_class_modifier = RwSignal::new(0);
-        let size_class = Memo::new(move |_| hero.size_class.get() + size_class_modifier.get());
+        let size_class = Memo::new(move |_| hero.size_class + size_class_modifier.get());
 
         let speed_modifier = RwSignal::new(0);
         let speed = Memo::new(move |_| {

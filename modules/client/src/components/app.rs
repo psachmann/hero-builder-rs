@@ -1,63 +1,40 @@
 use leptos::*;
 use leptos_router::*;
 
+use super::editor::Editor;
 use super::home::Home;
 use super::layout::Layout;
+use super::not_found::NotFound;
 use crate::i18n::provide_i18n_context;
-
-#[component]
-fn counter() -> impl IntoView {
-    let counter = create_rw_signal(0);
-
-    view! {
-        <div class="container mx-auto">
-            <div class="flex flex-row gap-4">
-                <div>
-                    <button
-                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                        on:click=move |_| counter.set(counter.get() - 1)
-                    >
-                        {"Decrement"}
-                    </button>
-                </div>
-                <div>
-                    <p class="text-lg font-bold pt-16">{counter}</p>
-                </div>
-                <div>
-                    <button
-                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                        on:click=move |_| counter.set(counter.get() + 1)
-                    >
-                        {"Increment"}
-                    </button>
-                </div>
-            </div>
-        </div>
-    }
-}
+use crate::models::Hero;
 
 #[component]
 pub fn app() -> impl IntoView {
     provide_i18n_context();
+    provide_context(create_rw_signal(AppState::default()));
 
     view! {
         <Router>
             <Layout>
                 <Routes>
                     <Route path="/" view=Home />
-                    <Route path="/counter" view=Counter />
-                    <Route
-                        path="/*any"
-                        view=|| {
-                            view! {
-                                <div class="container mx-auto justify-center">
-                                    <p class="text-2xl font-bold text-red-500">{"404 Not Found"}</p>
-                                </div>
-                            }
-                        }
-                    />
+                    <Route path="/editor/:id" view=Editor />
+                    <Route path="/*any" view=NotFound />
                 </Routes>
             </Layout>
         </Router>
+    }
+}
+
+#[derive(Debug, Clone)]
+pub struct AppState {
+    pub heros: Vec<Hero>,
+}
+
+impl Default for AppState {
+    fn default() -> Self {
+        Self {
+            heros: vec![Hero::default()],
+        }
     }
 }

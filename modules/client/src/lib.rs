@@ -1,6 +1,7 @@
 mod components;
 mod models;
 mod services;
+mod utils;
 
 // export the app component, so it can be used in the main.rs file
 pub use components::App;

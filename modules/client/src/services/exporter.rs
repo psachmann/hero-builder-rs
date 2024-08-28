@@ -1,5 +1,4 @@
 use anyhow::{Context, Ok, Result};
-use leptos::SignalGet;
 
 use crate::models::Hero;
 
@@ -18,7 +17,7 @@ pub fn export_hero(hero: &Hero) -> Result<(String, String)> {
     let hero_json =
         serde_json::to_string(hero).with_context(|| "Failed to serialize hero into JSON")?;
 
-    Ok((hero.name.get(), hero_json))
+    Ok((hero.name.clone(), hero_json))
 }
 
 #[cfg(test)]

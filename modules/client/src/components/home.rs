@@ -1,6 +1,7 @@
 use leptos::*;
 use leptos_i18n::*;
 use leptos_router::*;
+use uuid::Uuid;
 
 use crate::i18n;
 
@@ -20,7 +21,7 @@ pub fn home() -> impl IntoView {
                     </div>
                     <div class="text-center mt-6">
                         <A
-                            href="/counter"
+                            href={format!("/editor/{}", Uuid::default())}
                             class="bg-blue-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700"
                         >
                             {t!(i18n, home.start_button)}
