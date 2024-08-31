@@ -23,15 +23,27 @@ pub fn layout(children: ChildrenFn) -> impl IntoView {
             <header class="bg-slate-700 ">
                 <Header />
             </header>
-                <div class="relative flex flex-row flex-grow">
-                    <aside class="absolute top-0 left-0 bottom-0 w-1/4 bg-slate-700 my-4 rounded-r-2xl z-10" class=("hidden", sidebar_is_closed)>
-                        <Sidebar />
-                    </aside>
-                    <main class="flex-grow p-4 transition-colors duration-300" class=("bg-gray-500", sidebar_is_open) class=("opacity-50", sidebar_is_open) class=("pointer-events-none", sidebar_is_open) >
-                        {children()}
-                    </main>
-                </div>
-            <footer class="transition-colors duration-300" class=("bg-gray-500", sidebar_is_open) class=("opacity-50", sidebar_is_open)>
+            <div class="relative flex flex-row flex-grow">
+                <aside
+                    class="absolute top-0 left-0 bottom-0 w-1/4 bg-slate-700 my-4 rounded-r-2xl z-10"
+                    class=("hidden", sidebar_is_closed)
+                >
+                    <Sidebar />
+                </aside>
+                <main
+                    class="flex-grow p-4 transition-colors duration-300"
+                    class=("bg-gray-500", sidebar_is_open)
+                    class=("opacity-50", sidebar_is_open)
+                    class=("pointer-events-none", sidebar_is_open)
+                >
+                    {children()}
+                </main>
+            </div>
+            <footer
+                class="transition-colors duration-300"
+                class=("bg-gray-500", sidebar_is_open)
+                class=("opacity-50", sidebar_is_open)
+            >
                 <Footer />
             </footer>
         </div>

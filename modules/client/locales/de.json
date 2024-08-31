@@ -18,5 +18,9 @@
     "welcome_title": "Bau dir deinen Helden!",
     "welcome_text": "Willkommen beim Splittermond Helden Builder. Erschaffe mit diesem Werkzeug deine Charaktere für spannende Abenteuer in der Welt von Splittermond. Mach dich bereit, deine Legende zu schmieden!",
     "start_button": "Los geht's!"
+  },
+  "attributes": {
+    "title": "Attribute",
+    "description": "Die Attribute deines Helden bestimmen seine körperlichen und geistigen Fähigkeiten. Sie sind die Basis für viele Proben und bestimmen die Lebenspunkte deines Helden."
   }
 }

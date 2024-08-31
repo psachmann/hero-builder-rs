@@ -1,15 +1,15 @@
 use leptos::*;
-
-use super::hero::Hero;
+use serde::{Deserialize, Serialize};
 
 /// The attributes of a hero.
 /// 0: The initial value of the attribute after character creation.
 /// 1: The current value of invested points in the attribute.
 /// 2: Temporary points that can be added to the attribute.
 /// 3: The memoized value of the attribute.
-pub type Attribute = (RwSignal<i32>, RwSignal<i32>, RwSignal<i32>, Memo<i32>);
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, Default)]
+pub struct Attribute(pub RwSignal<i32>, pub RwSignal<i32>, pub RwSignal<i32>);
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, Default)]
 pub struct Attributes {
     /// The charisma of the hero. German: Ausstrahlung
     pub charisma: Attribute,
@@ -54,6 +54,7 @@ pub struct DerivedAttributes {
     pub physical_resistance: DerivedAttribute,
 }
 
+/*
 impl DerivedAttributes {
     pub fn new(hero: Hero, attributes: Attributes) -> Self {
         let size_class_modifier = RwSignal::new(0);
@@ -108,3 +109,4 @@ impl DerivedAttributes {
         }
     }
 }
+*/

@@ -1,12 +1,12 @@
 use leptos::*;
 use leptos_router::*;
 
-use super::editor::Editor;
-use super::home::Home;
-use super::layout::{Layout, SidebarState};
-use super::not_found::NotFound;
-use crate::i18n::provide_i18n_context;
-use crate::models::Hero;
+use super::layout::SidebarState;
+use crate::{
+    components::{editor, home::Home, layout::Layout, not_found::NotFound},
+    i18n::provide_i18n_context,
+    models::Hero,
+};
 
 #[component]
 fn placeholder(title: &'static str) -> impl IntoView {
@@ -27,13 +27,10 @@ pub fn app() -> impl IntoView {
             <Layout>
                 <Routes>
                     <Route path="/" view=Home />
-                    <Route path="/editor/:id" view=Editor>
+                    <Route path="/editor/:id" view=editor::Index>
                         <Route path="" view=|| view! { <Placeholder title="Select a Hero!" /> } />
-                        <Route path="metadata" view=|| view! { <Placeholder title="Metadata" /> } />
-                        <Route
-                            path="attributes"
-                            view=|| view! { <Placeholder title="Attributes" /> }
-                        />
+                        <Route path="metadata" view=editor::Metadata />
+                        <Route path="attributes" view=editor::Attributes />
                         <Route path="skills" view=|| view! { <Placeholder title="Skills" /> } />
                         <Route path="powers" view=|| view! { <Placeholder title="Powers" /> } />
                         <Route
