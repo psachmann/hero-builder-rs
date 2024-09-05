@@ -29,6 +29,25 @@ pub struct Attributes {
     pub willpower: Attribute,
 }
 
+impl IntoIterator for Attributes {
+    type Item = (String, Attribute);
+    type IntoIter = std::vec::IntoIter<Self::Item>;
+
+    fn into_iter(self) -> Self::IntoIter {
+        vec![
+            ("Charisma".to_string(), self.charisma),
+            ("Agility".to_string(), self.agility),
+            ("Intuition".to_string(), self.intuition),
+            ("Constitution".to_string(), self.constitution),
+            ("Mysticism".to_string(), self.mysticism),
+            ("Strength".to_string(), self.strength),
+            ("Intelligence".to_string(), self.intelligence),
+            ("Willpower".to_string(), self.willpower),
+        ]
+        .into_iter()
+    }
+}
+
 /// The derived attributes of a hero.
 /// 0: The memoized value of the attribute.
 /// 1: Temporary points that can be added to the attribute.

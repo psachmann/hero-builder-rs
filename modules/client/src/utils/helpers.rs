@@ -10,10 +10,14 @@ pub fn use_app_state() -> RwSignal<AppState> {
 }
 
 // FIXME: Check if lifetime is correct and if copy trait is needed
-pub fn use_param<P: PartialEq + Params, R: PartialEq + Default>(
+pub fn use_param<P, R>(
     params: Option<Memo<Result<P, ParamsError>>>,
     select: impl FnOnce(&P) -> R + Clone + Copy + 'static,
-) -> Memo<R> {
+) -> Memo<R>
+where
+    P: PartialEq + Params,
+    R: PartialEq + Default,
+{
     let params = match params {
         Some(params) => params,
         None => use_params::<P>(),
