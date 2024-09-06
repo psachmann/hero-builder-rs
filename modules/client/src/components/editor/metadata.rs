@@ -53,7 +53,7 @@ pub fn metadata() -> impl IntoView {
                         id="size_class"
                         type="number"
                         placeholder="Size Class"
-                        value=hero.get().size_class.to_string()
+                        value=hero.get().size_class.get()
                     />
                 </div>
                 <div class="flex flex-row w-full items-center py-4 border-b-2">

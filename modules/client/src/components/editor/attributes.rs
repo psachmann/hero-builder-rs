@@ -1,13 +1,12 @@
 use leptos::*;
 
+use super::editor_params::EditorParams;
 use crate::{
-    i18n::{t, use_i18n},
-    models::Hero,
+    i18n::{t, use_i18n, use_i18n_scoped},
     utils::{use_hero_with_id, use_param, ParamUuid},
 };
 
-use super::editor_params::EditorParams;
-
+// TODO: This should be a shared component
 #[component]
 pub fn counter(count: RwSignal<i32>) -> impl IntoView {
     let decrement = move || count.update(|v| *v -= 1);
@@ -34,22 +33,23 @@ pub fn counter(count: RwSignal<i32>) -> impl IntoView {
 
 #[component]
 pub fn attributes() -> impl IntoView {
-    let i18n = use_i18n();
+    let i18n_attributes = use_i18n_scoped!(editor.attributes);
+    let i18n_derived_attributes = use_i18n_scoped!(editor.derived_attributes);
     let id = use_param::<EditorParams, ParamUuid>(None, |params| params.id);
-    let (hero, set_hero) = use_hero_with_id(id);
+    let (hero, _) = use_hero_with_id(id);
 
     view! {
-        <div class="container mx-auto flex flex-col gap-2 bg-slate-100 rounded-lg shadow-md p-4">
-            <p class="text-black text-xl font-semibold">{t!(i18n, editor.attributes.title)}</p>
-            <div class="border-2 rounded-lg">
-                <table class="table-auto w-full">
+        <div class="container mx-auto flex flex-col gap-2 bg-slate-100 rounded-xl shadow-md p-4">
+            <p class="text-black text-xl font-semibold">{t!(i18n_attributes, title)}</p>
+            <div class="border-2 rounded-xl">
+                <table class="table-auto mt-2 w-full">
                     <thead>
                         <tr class="border-b-2">
-                            <th class="text-start">{{ t!(i18n, editor.attributes.title) }}</th>
-                            <th class="text-center">{{ t!(i18n, editor.attributes.value) }}</th>
-                            <th class="text-center">{{ t!(i18n, editor.attributes.trained) }}</th>
-                            <th class="text-center">{{ t!(i18n, editor.attributes.initial) }}</th>
-                            <th class="text-center">{{ t!(i18n, editor.attributes.modifier) }}</th>
+                            <th class="text-start">{{ t!(i18n_attributes, title) }}</th>
+                            <th class="text-center">{{ t!(i18n_attributes, value) }}</th>
+                            <th class="text-center">{{ t!(i18n_attributes, trained) }}</th>
+                            <th class="text-center">{{ t!(i18n_attributes, initial) }}</th>
+                            <th class="text-center">{{ t!(i18n_attributes, modifier) }}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -57,22 +57,21 @@ pub fn attributes() -> impl IntoView {
                             .get()
                             .attributes
                             .into_iter()
-                            .map(|(name, value)| {
-                                let current = move || value.0.get() + value.1.get() + value.2.get();
+                            .map(|(idx, attribute)| {
                                 view! {
                                     <tr class="border-b-2 last:border-0 hover:bg-gray-200">
-                                        <td class="text-start">{name}</td>
+                                        <td class="text-start">{{ t!(i18n_attributes, names, count = move || idx)}}</td>
                                         <td class="text-center">
-                                            <p class="font-semibold">{current}</p>
+                                            <p class="font-semibold">{attribute.value}</p>
                                         </td>
                                         <td class="text-center">
-                                            <Counter count=value.0.clone() />
+                                            <Counter count=attribute.initial.clone() />
                                         </td>
                                         <td class="text-center">
-                                            <Counter count=value.1.clone() />
+                                            <Counter count=attribute.trained.clone() />
                                         </td>
                                         <td class="text-center">
-                                            <Counter count=value.2.clone() />
+                                            <Counter count=attribute.modifier.clone() />
                                         </td>
                                     </tr>
                                 }
@@ -82,35 +81,39 @@ pub fn attributes() -> impl IntoView {
                 </table>
             </div>
             <p class="text-black text-xl font-semibold pt-4">
-                {t!(i18n, editor.derived_attributes.title)}
+                {t!(i18n_derived_attributes, title)}
             </p>
-            <table class="table-auto border-2 rounded-lg w-full">
-                <thead>
-                    <tr>
-                        <th class="text-start">{{ t!(i18n, editor.attributes.title) }}</th>
-                        <th class="text-start">{{ t!(i18n, editor.attributes.value) }}</th>
-                        <th class="text-start">{{ t!(i18n, editor.attributes.trained) }}</th>
-                        <th class="text-start">{{ t!(i18n, editor.attributes.initial) }}</th>
-                        <th class="text-start">{{ t!(i18n, editor.attributes.modifier) }}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>{"Charisma"}</td>
-                        <td>{"4"}</td>
-                        <td>{"3"}</td>
-                        <td>{"1"}</td>
-                        <td>{"0"}</td>
-                    </tr>
-                    <tr>
-                        <td>{"Intelligenz"}</td>
-                        <td>{"4"}</td>
-                        <td>{"3"}</td>
-                        <td>{"1"}</td>
-                        <td>{"0"}</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="border-2 rounded-xl">
+                <table class="table-auto mt-2 w-full">
+                    <thead>
+                        <tr class="border-b-2">
+                            <th class="text-start">{{ t!(i18n_derived_attributes, title) }}</th>
+                            <th class="text-center">{{ t!(i18n_derived_attributes, value) }}</th>
+                            <th class="text-center">{{ t!(i18n_derived_attributes, modifier) }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {hero
+                            .get()
+                            .derived_attributes
+                            .into_iter()
+                            .map(|(idx, attribute)| {
+                                view! {
+                                    <tr class="border-b-2 last:border-0 hover:bg-gray-200">
+                                        <td class="text-start">{{ t!(i18n_derived_attributes, names, count = move || idx)}}</td>
+                                        <td class="text-center">
+                                            <p class="font-semibold">{attribute.value}</p>
+                                        </td>
+                                        <td class="text-center">
+                                            <Counter count=attribute.modifier.clone() />
+                                        </td>
+                                    </tr>
+                                }
+                            })
+                            .collect::<Vec<_>>()}
+                    </tbody>
+                </table>
+            </div>
         </div>
     }
 }

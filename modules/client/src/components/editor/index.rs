@@ -5,7 +5,7 @@ use leptos_router::*;
 pub fn index() -> impl IntoView {
     view! {
         <div class="flex flex-col gap-4">
-            <div class="container mx-auto bg-slate-100 rounded-lg shadow-md items-center">
+            <div class="container mx-auto bg-slate-100 rounded-b-xl shadow-md items-center">
                 <div class="flex flex-row justify-center items-center p-4">
                     <A href="metadata" class="flex-1 text-blue-400 hover:underline">
                         {"Metadata"}

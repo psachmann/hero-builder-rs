@@ -31,7 +31,7 @@ pub fn app() -> impl IntoView {
                         <Route path="" view=|| view! { <Placeholder title="Select a Hero!" /> } />
                         <Route path="metadata" view=editor::Metadata />
                         <Route path="attributes" view=editor::Attributes />
-                        <Route path="skills" view=|| view! { <Placeholder title="Skills" /> } />
+                        <Route path="skills" view=editor::Skills />
                         <Route path="powers" view=|| view! { <Placeholder title="Powers" /> } />
                         <Route
                             path="equipment"

@@ -1,3 +1,4 @@
+/*
 use anyhow::{Context, Result};
 
 use crate::models::Hero;
@@ -19,3 +20,4 @@ pub fn import_hero(json: &String) -> Result<Hero> {
 
     Ok(hero)
 }
+*/

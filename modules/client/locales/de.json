@@ -26,12 +26,95 @@
       "value": "Wert",
       "trained": "Geübt",
       "initial": "Anfang",
-      "modifier": "Modifikator"
+      "modifier": "Modifikator",
+      "names": [
+        [
+          "Ausstrahlung",
+          0
+        ],
+        [
+          "Beweglichkeit",
+          1
+        ],
+        [
+          "Intuition",
+          2
+        ],
+        [
+          "Konstitution",
+          3
+        ],
+        [
+          "Mystik",
+          4
+        ],
+        [
+          "Stärke",
+          5
+        ],
+        [
+          "Verstand",
+          6
+        ],
+        [
+          "Willenskraft",
+          7
+        ],
+        [
+          "Unbekannt"
+        ]
+      ]
     },
     "derived_attributes": {
       "title": "Abgeleitete Attribute",
       "name": "Name",
-      "value": "Wert"
+      "value": "Wert",
+      "modifier": "Modifikator",
+      "names": [
+        [
+          "Größenklasse",
+          0
+        ],
+        [
+          "Geschwindigkeit",
+          1
+        ],
+        [
+          "Initiative",
+          2
+        ],
+        [
+          "Lebenspunkte",
+          3
+        ],
+        [
+          "Fokus",
+          4
+        ],
+        [
+          "Verteidigung",
+          5
+        ],
+        [
+          "Geistiger Widerstand",
+          6
+        ],
+        [
+          "Körperlicher Widerstand",
+          7
+        ],
+        [
+          "Unbekannt"
+        ]
+      ]
+    },
+    "skills": {
+      "title": "Fertigkeiten",
+      "name": "Name",
+      "attribute": "Attribut",
+      "value": "Wert",
+      "trained": "Geübt",
+      "modifier": "Modifikator"
     }
   }
 }

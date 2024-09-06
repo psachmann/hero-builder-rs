@@ -31,7 +31,7 @@ pub fn layout(children: ChildrenFn) -> impl IntoView {
                     <Sidebar />
                 </aside>
                 <main
-                    class="flex-grow p-4 transition-colors duration-300"
+                    class="flex-grow transition-colors duration-300"
                     class=("bg-gray-500", sidebar_is_open)
                     class=("opacity-50", sidebar_is_open)
                     class=("pointer-events-none", sidebar_is_open)

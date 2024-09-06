@@ -1,15 +1,36 @@
 use leptos::*;
-use serde::{Deserialize, Serialize};
+use serde::Serialize;
 
-/// The attributes of a hero.
-/// 0: The initial value of the attribute after character creation.
-/// 1: The current value of invested points in the attribute.
-/// 2: Temporary points that can be added to the attribute.
-/// 3: The memoized value of the attribute.
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, Default)]
-pub struct Attribute(pub RwSignal<i32>, pub RwSignal<i32>, pub RwSignal<i32>);
+/// Represents an attribute of a character.
+#[derive(Debug, Clone, PartialEq, Serialize)]
+pub struct Attribute {
+    /// The current value of the attribute.
+    pub value: Memo<i32>,
+    /// The initial value of the attribute.
+    pub initial: RwSignal<i32>,
+    /// The trained value of the attribute.
+    pub trained: RwSignal<i32>,
+    /// The modifier value of the attribute.
+    pub modifier: RwSignal<i32>,
+}
 
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, Default)]
+impl Default for Attribute {
+    fn default() -> Self {
+        let initial = RwSignal::new(0);
+        let trained = RwSignal::new(0);
+        let modifier = RwSignal::new(0);
+        let value = Memo::new(move |_| initial.get() + trained.get() + modifier.get());
+
+        Self {
+            value,
+            initial,
+            trained,
+            modifier,
+        }
+    }
+}
+
+#[derive(Debug, Clone, PartialEq, Serialize, Default)]
 pub struct Attributes {
     /// The charisma of the hero. German: Ausstrahlung
     pub charisma: Attribute,
@@ -30,102 +51,20 @@ pub struct Attributes {
 }
 
 impl IntoIterator for Attributes {
-    type Item = (String, Attribute);
+    type Item = (i32, Attribute);
     type IntoIter = std::vec::IntoIter<Self::Item>;
 
     fn into_iter(self) -> Self::IntoIter {
         vec![
-            ("Charisma".to_string(), self.charisma),
-            ("Agility".to_string(), self.agility),
-            ("Intuition".to_string(), self.intuition),
-            ("Constitution".to_string(), self.constitution),
-            ("Mysticism".to_string(), self.mysticism),
-            ("Strength".to_string(), self.strength),
-            ("Intelligence".to_string(), self.intelligence),
-            ("Willpower".to_string(), self.willpower),
+            (0, self.charisma),
+            (1, self.agility),
+            (2, self.intuition),
+            (3, self.constitution),
+            (4, self.mysticism),
+            (5, self.strength),
+            (6, self.intelligence),
+            (7, self.willpower),
         ]
         .into_iter()
     }
 }
-
-/// The derived attributes of a hero.
-/// 0: The memoized value of the attribute.
-/// 1: Temporary points that can be added to the attribute.
-pub type DerivedAttribute = (Memo<i32>, RwSignal<i32>);
-
-#[derive(Debug, Clone)]
-pub struct DerivedAttributes {
-    /// The size class of the hero calculated from race. German: Größenklasse
-    pub size_class: DerivedAttribute,
-    /// The speed of the hero calculated by size class + agility. German: Geschwindigkeit
-    pub speed: DerivedAttribute,
-    /// The initiative of the hero calculated by 10 - intuition. German: Initiative
-    pub initiative: DerivedAttribute,
-    /// The hit points of the hero calculated by size class + constitution. German: Lebenspunk
-    pub hit_points: DerivedAttribute,
-    /// The focus of the hero calculated by 2 x (mysticism + willpower). German: Fokus
-    pub focus: DerivedAttribute,
-    /// The defense of the hero calculated by 12 + agility + strength ± race. German: Verteidigung
-    pub defense: DerivedAttribute,
-    /// The mental resistance of the hero calculated by 12 + intelligence + willpower. German: Geistiger Widerstand
-    pub mental_resistance: DerivedAttribute,
-    /// The physical resistance of the hero calculated by 12 + constitution + willpower. German: Körperlicher Widerstand
-    pub physical_resistance: DerivedAttribute,
-}
-
-/*
-impl DerivedAttributes {
-    pub fn new(hero: Hero, attributes: Attributes) -> Self {
-        let size_class_modifier = RwSignal::new(0);
-        let size_class = Memo::new(move |_| hero.size_class + size_class_modifier.get());
-
-        let speed_modifier = RwSignal::new(0);
-        let speed = Memo::new(move |_| {
-            size_class.get() + attributes.agility.3.get() + speed_modifier.get()
-        });
-
-        let initiative_modifier = RwSignal::new(0);
-        let initiative =
-            Memo::new(move |_| 10 - attributes.intuition.3.get() + initiative_modifier.get());
-
-        let hit_points_modifier = RwSignal::new(0);
-        let hit_points = Memo::new(move |_| {
-            size_class.get() + attributes.constitution.3.get() + hit_points_modifier.get()
-        });
-
-        let focus_modifier = RwSignal::new(0);
-        let focus = Memo::new(move |_| {
-            2 * (attributes.mysticism.3.get() + attributes.willpower.3.get() + focus_modifier.get())
-        });
-
-        let defense_modifier = RwSignal::new(0);
-        let defense = Memo::new(move |_| {
-            12 + attributes.agility.3.get() + attributes.strength.3.get() + defense_modifier.get()
-        }); // TODO: add race modifier
-
-        let mental_resistance_modifier = RwSignal::new(0);
-        let mental_resistance = Memo::new(move |_| {
-            12 + attributes.intelligence.3.get()
-                + attributes.willpower.3.get()
-                + mental_resistance_modifier.get()
-        });
-        let physical_resistance_modifier = RwSignal::new(0);
-        let physical_resistance = Memo::new(move |_| {
-            12 + attributes.constitution.3.get()
-                + attributes.willpower.3.get()
-                + physical_resistance_modifier.get()
-        });
-
-        Self {
-            size_class: (size_class, size_class_modifier),
-            speed: (speed, speed_modifier),
-            initiative: (initiative, initiative_modifier),
-            hit_points: (hit_points, hit_points_modifier),
-            focus: (focus, focus_modifier),
-            defense: (defense, defense_modifier),
-            mental_resistance: (mental_resistance, mental_resistance_modifier),
-            physical_resistance: (physical_resistance, physical_resistance_modifier),
-        }
-    }
-}
-*/

@@ -8,7 +8,7 @@ pub fn footer() -> impl IntoView {
     let i18n = use_i18n();
 
     view! {
-        <div class="container mx-auto bg-slate-700 text-white py-2 rounded-t-2xl">
+        <div class="container mx-auto bg-slate-700 text-white py-2 mt-4 rounded-t-xl">
             <div class="container mx-auto flex flex-col md:flex-row justify-center">
                 <div class="flex space-x-4 mt-2 md:mt-0">
                     <span>{t!(i18n, footer.copyright)}</span>
