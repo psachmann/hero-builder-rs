@@ -18,5 +18,102 @@
     "welcome_title": "Build your Hero!",
     "welcome_text": "Welcome to the Splittermond Hero Builder. Create your characters for exciting adventures in the world of Splittermond with this tool. Get ready to forge your legend!",
     "start_button": "Let's go!"
+  },
+  "editor": {
+    "attributes": {
+      "title": "Attributes",
+      "name": "Name",
+      "value": "Value",
+      "trained": "Trained",
+      "initial": "Initial",
+      "modifier": "Modifier",
+      "names": [
+        [
+          "Charisma",
+          0
+        ],
+        [
+          "Agility",
+          1
+        ],
+        [
+          "Intuition",
+          2
+        ],
+        [
+          "Constitution",
+          3
+        ],
+        [
+          "Mystique",
+          4
+        ],
+        [
+          "Strength",
+          5
+        ],
+        [
+          "Intellect",
+          6
+        ],
+        [
+          "Willpower",
+          7
+        ],
+        [
+          "Unknown"
+        ]
+      ]
+    },
+    "derived_attributes": {
+      "title": "Derived Attributes",
+      "name": "Name",
+      "value": "Value",
+      "modifier": "Modifier",
+      "names": [
+        [
+          "Size Class",
+          0
+        ],
+        [
+          "Speed",
+          1
+        ],
+        [
+          "Initiative",
+          2
+        ],
+        [
+          "Defense",
+          3
+        ],
+        [
+          "Mystic Defense",
+          4
+        ],
+        [
+          "Health",
+          5
+        ],
+        [
+          "Astral Energy",
+          6
+        ],
+        [
+          "Karma Energy",
+          7
+        ],
+        [
+          "Unknown"
+        ]
+      ]
+    },
+    "skills": {
+      "title": "Skills",
+      "name": "Name",
+      "value": "Value",
+      "trained": "Trained",
+      "modifier": "Modifier"
+    }
   }
 }
