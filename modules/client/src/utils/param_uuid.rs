@@ -5,9 +5,9 @@ use uuid::Uuid;
 #[derive(Debug, Clone, Copy, Default, PartialEq)]
 pub struct ParamUuid(Uuid);
 
-impl Into<Uuid> for ParamUuid {
-    fn into(self) -> Uuid {
-        self.0
+impl From<ParamUuid> for Uuid {
+    fn from(param: ParamUuid) -> Self {
+        param.0
     }
 }
 

@@ -2,7 +2,7 @@ use leptos::*;
 use serde::Serialize;
 
 /// Represents an attribute of a character.
-#[derive(Debug, Clone, PartialEq, Serialize)]
+#[derive(Debug, Clone, Copy, PartialEq, Serialize)]
 pub struct Attribute {
     /// The current value of the attribute.
     pub value: Memo<i32>,
@@ -30,7 +30,7 @@ impl Default for Attribute {
     }
 }
 
-#[derive(Debug, Clone, PartialEq, Serialize, Default)]
+#[derive(Debug, Clone, Copy, PartialEq, Serialize, Default)]
 pub struct Attributes {
     /// The charisma of the hero. German: Ausstrahlung
     pub charisma: Attribute,

@@ -60,18 +60,20 @@ pub fn attributes() -> impl IntoView {
                             .map(|(idx, attribute)| {
                                 view! {
                                     <tr class="border-b-2 last:border-0 hover:bg-gray-200">
-                                        <td class="text-start">{{ t!(i18n_attributes, names, count = move || idx)}}</td>
+                                        <td class="text-start">
+                                            {{ t!(i18n_attributes, names, count = move || idx) }}
+                                        </td>
                                         <td class="text-center">
                                             <p class="font-semibold">{attribute.value}</p>
                                         </td>
                                         <td class="text-center">
-                                            <Counter count=attribute.initial.clone() />
+                                            <Counter count=attribute.initial />
                                         </td>
                                         <td class="text-center">
-                                            <Counter count=attribute.trained.clone() />
+                                            <Counter count=attribute.trained />
                                         </td>
                                         <td class="text-center">
-                                            <Counter count=attribute.modifier.clone() />
+                                            <Counter count=attribute.modifier />
                                         </td>
                                     </tr>
                                 }
@@ -100,12 +102,16 @@ pub fn attributes() -> impl IntoView {
                             .map(|(idx, attribute)| {
                                 view! {
                                     <tr class="border-b-2 last:border-0 hover:bg-gray-200">
-                                        <td class="text-start">{{ t!(i18n_derived_attributes, names, count = move || idx)}}</td>
+                                        <td class="text-start">
+                                            {{
+                                                t!(i18n_derived_attributes, names, count = move || idx)
+                                            }}
+                                        </td>
                                         <td class="text-center">
                                             <p class="font-semibold">{attribute.value}</p>
                                         </td>
                                         <td class="text-center">
-                                            <Counter count=attribute.modifier.clone() />
+                                            <Counter count=attribute.modifier />
                                         </td>
                                     </tr>
                                 }

@@ -3,7 +3,7 @@ use leptos_router::*;
 use log::info;
 
 use crate::{
-    i18n::{self, t, use_i18n},
+    i18n::{t, use_i18n},
     utils::use_app_state,
 };
 

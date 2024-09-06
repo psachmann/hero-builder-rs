@@ -9,10 +9,9 @@ pub fn use_app_state() -> RwSignal<AppState> {
     expect_context::<RwSignal<AppState>>()
 }
 
-// FIXME: Check if lifetime is correct and if copy trait is needed
 pub fn use_param<P, R>(
     params: Option<Memo<Result<P, ParamsError>>>,
-    select: impl FnOnce(&P) -> R + Clone + Copy + 'static,
+    select: impl FnOnce(&P) -> R + Copy + 'static,
 ) -> Memo<R>
 where
     P: PartialEq + Params,

@@ -23,12 +23,8 @@ impl Default for Hero {
         let size_class = RwSignal::new(0);
         let race_modifier = RwSignal::new(0);
         let attributes = Attributes::default();
-        let derived_attributes = DerivedAttributes::new(
-            size_class.clone(),
-            race_modifier.clone(),
-            attributes.clone(),
-        );
-        let skills = Skills::new(attributes.clone());
+        let derived_attributes = DerivedAttributes::new(size_class, race_modifier, attributes);
+        let skills = Skills::new(attributes);
 
         Self {
             id: Uuid::default(),
@@ -40,7 +36,7 @@ impl Default for Hero {
             race_modifier,
             attributes,
             derived_attributes,
-            skills  ,
+            skills,
         }
     }
 }

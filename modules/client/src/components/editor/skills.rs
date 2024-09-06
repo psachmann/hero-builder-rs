@@ -39,10 +39,10 @@ pub fn skills() -> impl IntoView {
                                             <p class="font-semibold">{skill.value}</p>
                                         </td>
                                         <td class="text-center">
-                                            <Counter count=skill.trained.clone() />
+                                            <Counter count=skill.trained />
                                         </td>
                                         <td class="text-center">
-                                            <Counter count=skill.modifier.clone() />
+                                            <Counter count=skill.modifier />
                                         </td>
                                     </tr>
                                 }
