@@ -14,9 +14,14 @@
       {
         devShells.default = pkgs.mkShell {
           packages = with pkgs; [
-            gcc
             rustup
           ];
+          shellHook = ''
+            # setting path for cargo binaries
+            export PATH=$HOME/.cargo/bin:$PATH
+            # setting backtrace for rust
+            export RUST_BACKTRACE=1
+          '';
         };
       }
     );

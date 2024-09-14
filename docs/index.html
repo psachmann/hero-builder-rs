@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Hero Builder</title>
+    <meta name="description" content="A hero builder tool for pen and paper">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/styles-c5f94f982fd2ee7e.css" integrity="sha384&#x2D;OzHTVsvrZX5dfjs23TCcQ4XuXy36qndDtezPpr6PmVCc&#x2B;gLBq4KtYBSpbh8PdIAt"/>
+    
+
+<link rel="modulepreload" href="/hero-builder-client-b7ce8c8494775077.js" crossorigin=anonymous integrity="sha384-jGVBWVyKf07Rr77NUxgrXOidtWQw8zLhVWT7aqeH9H/uXx1OmhkX3qkxD0pKD9yG">
+<link rel="preload" href="/hero-builder-client-b7ce8c8494775077_bg.wasm" crossorigin=anonymous integrity="sha384-E3JJF+A55laoQwG1P31CjnL+MUvW0zXjRdiS9ex3kVADMRaWII2wB7h6lJxqfEV0" as="fetch" type="application/wasm"></head>
+
+<body>
+    <!-- mount point for leptos  -->
+
+<script type="module" nonce="opIsnIOdHX+v26/Jjy6R3w==">
+import init, * as bindings from '/hero-builder-client-b7ce8c8494775077.js';
+const wasm = await init('/hero-builder-client-b7ce8c8494775077_bg.wasm');
+
+
+window.wasmBindings = bindings;
+
+
+dispatchEvent(new CustomEvent("TrunkApplicationStarted", {detail: {wasm}}));
+
+</script></body>
+
+</html>
