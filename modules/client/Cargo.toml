@@ -8,7 +8,7 @@ default = "de"
 locales = ["de", "en"]
 
 [dependencies]
-anyhow = "1.0.86"
+anyhow = "1.0.89"
 chrono = { version = "0.4.38", features = ["serde"] }
 chrono-tz = { version = "0.9.0", features = ["serde"] }
 console_error_panic_hook = "0.1.7"
